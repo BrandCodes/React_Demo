@@ -3,19 +3,23 @@ import React, {Component} from 'react';
 class TodoForm extends Component{
     constructor (){
         super();
+        //Estados iniciales:
         this.state={
             title:'',
             responsible:'',
             description:'',
             priority: 'low'
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //Indicando a que componente pertenece(para que no se pierda el scope)
+        this.handleInputChange = this.handleInputChange.bind(this);     
+        this.handleSubmit = this.handleSubmit.bind(this);       
     }
 
+    //Evento que maneja el envío del formulario.
     handleSubmit(e){
-        e.preventDefault();
-        this.props.onAddTodo(this.state);
+        e.preventDefault();                 //Evita refrescar toda la página.
+        //Evento que jala a la función de 'Agregar nueva tarjeta' y le asigna el estado actual:
+        this.props.onAddTodo(this.state);   
         this.setState({
             title:'',
             responsible:'',
@@ -24,11 +28,12 @@ class TodoForm extends Component{
         });
     }
 
+    //Acción que se ajecuta cada que hay un cambio en un input (manda a consola lo que se escribe dentro del input).
     handleInputChange(e){
         const{value,name} = e.target;
         console.log(value,name);
         this.setState({
-            [name]:value
+            [name]:value                    //Modifica el estado con el nuevo nombre.
         });
     }
     

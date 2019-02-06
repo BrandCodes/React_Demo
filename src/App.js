@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import Navigation from './Component/Navigation';
-import { todos } from './todos.json';   //data
-import TodoForm from './Component/TodoForm.js'
+import { todos } from './todos.json';   //Data
+import TodoForm from './Component/TodoForm.js'    //Componente
 
 class App extends Component {
   constructor(){
@@ -14,26 +14,30 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
+  //Función que elimina a una tarjeta
   removeTodo (index){
     this.setState({
-      todos: this.state.todos.filter((e, i) => {
+      //Recorre los elementos y si no se cumple con una condición no la devuelve (devuelve lo que será borrado).
+      todos: this.state.todos.filter((e, i) => {    
         return i !== index
       }) 
     });
   }
 
+  //Función que agrega una nueva tarjeta. Recibe un 'todo' como parametro.
   handleAddTodo(todo){
     this.setState({
-      todos:[...this.state.todos, todo]
+      todos:[...this.state.todos, todo]     //Agrega directamente al estado para formar un nuevo arreglo.
     });
   }
 
   render() {
-    const todos = this.state.todos.map((todo,i) => {
+    const todos = this.state.todos.map((todo,i) => {    //Recorre las tareas una x una y al final regresa un arreglo de objetos.
       return (
+        //Tarjeta
         <div className="col-md-4" key={i}>
           <div className="card mt-4">
-            <div className="card-title text-center">
+            <div className="card-header">
               <h3>{todo.title}</h3>
               <span className="badge badge-pill badge-danger ml-2">
                 {todo.priority}
