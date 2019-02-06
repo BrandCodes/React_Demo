@@ -10,7 +10,7 @@ class TodoForm extends Component{
             priority: 'low'
         };
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e){
@@ -43,7 +43,7 @@ class TodoForm extends Component{
                         className="form-control"
                         value={this.state.title}
                         onChange={this.handleInputChange}
-                        placeholder="Title"
+                        placeholder="Track Number"
                         />
                     </div>
                     <div className="form-group">
@@ -53,7 +53,7 @@ class TodoForm extends Component{
                         className="form-control"
                         value={this.state.responsible}
                         onChange={this.handleInputChange}
-                        placeholder="Responsible"
+                        placeholder="Artist"
                         />
                     </div>
                     <div className="form-group">
@@ -63,7 +63,7 @@ class TodoForm extends Component{
                         className="form-control"
                         value={this.state.description}
                         onChange={this.handleInputChange}
-                        placeholder="Description"
+                        placeholder="Track Name"
                         />
                     </div>
                     <div className="form-group">
@@ -73,12 +73,12 @@ class TodoForm extends Component{
                         value={this.state.priority}
                         onChange={this.handleInputChange}
                         >
-                            <option>low</option>
-                            <option>medium</option>
-                            <option>high</option>
+                            <option>soon</option>
+                            <option>exclusive</option>
+                            <option>out now</option>
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-outline-info btn-sm">
                         Save
                     </button>
                 </form>

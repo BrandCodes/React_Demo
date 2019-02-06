@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 //import Navigation from './Component/Navigation';
 import { todos } from './todos.json';   //data
-import TodoForm from './Component/TodoForm'
+import TodoForm from './Component/TodoForm.js'
 
 class App extends Component {
   constructor(){
@@ -25,13 +25,13 @@ class App extends Component {
   handleAddTodo(todo){
     this.setState({
       todos:[...this.state.todos, todo]
-    })
+    });
   }
 
   render() {
     const todos = this.state.todos.map((todo,i) => {
       return (
-        <div className="col-md-4">
+        <div className="col-md-4" key={i}>
           <div className="card mt-4">
             <div className="card-title text-center">
               <h3>{todo.title}</h3>
@@ -44,7 +44,7 @@ class App extends Component {
               <p><mark>{todo.responsible}</mark></p>
             </div>
             <div className="card-footer">
-              <button className="btn btn-danger"
+              <button className="btn btn-outline-danger btn-sm" 
                 onClick={this.removeTodo.bind(this, i)}>
                 Delete
               </button>
